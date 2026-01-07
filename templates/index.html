@@ -312,7 +312,6 @@
             resetMeter();
             textInput.focus();
         }
-
         async function analyzeText() {
             const text = textInput.value.trim();
             
@@ -346,47 +345,9 @@
                 // Скрываем загрузку
                 loader.style.display = 'none';
                 
-                // Определяем процент токсичности
-                let toxicityScore;
+                // Получаем процент токсичности из JSON
+                let toxicityScore = result.toxicity_score; // Используем поле toxicity_score
                 
-                // Проверяем, что результат - число
-                if (typeof result === 'number') {
-                    toxicityScore = result;
-                } else if (typeof result === 'boolean') {
-                    toxicityScore = result ? 100 : 0;
-                } else if (typeof result === 'string') {
-                    // Пробуем преобразовать строку в число
-                    toxicityScore = parseFloat(result);
-                    if (isNaN(toxicityScore)) {
-                        // Если не удалось преобразовать, проверяем на булевые значения
-                        if (result.toLowerCase() === 'true' || result === '1') {
-                            toxicityScore = 100;
-                        } else if (result.toLowerCase() === 'false' || result === '0') {
-                            toxicityScore = 0;
-                        } else {
-                            toxicityScore = 0;
-                        }
-                    }
-                } else {
-                    // Если результат непонятный, ставим 0
-                    toxicityScore = 0;
-                }
-                
-                // Преобразуем в проценты от 0 до 100
-                // Если результат от 0 до 1 (вероятность), умножаем на 100
-                if (toxicityScore >= 0 && toxicityScore <= 1) {
-                    toxicityScore = Math.round(toxicityScore * 100);
-                }
-                // Если результат true/false или 1/0
-                else if (toxicityScore === 1 || toxicityScore === true) {
-                    toxicityScore = 100;
-                }
-                else if (toxicityScore === 0 || toxicityScore === false) {
-                    toxicityScore = 0;
-                }
-                
-                // Ограничиваем от 0 до 100
-                toxicityScore = Math.min(100, Math.max(0, toxicityScore));
                 
                 // Обновляем UI
                 updateMeter(toxicityScore);

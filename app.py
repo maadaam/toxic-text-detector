@@ -9,8 +9,7 @@ import uvicorn
 # FastAPI приложение
 app = FastAPI(title="Toxicity Detection API")
 
-# Подключаем статические файлы и шаблоны
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# Подключаем шаблоны
 templates = Jinja2Templates(directory="templates")
 
 # Загружаем модель
@@ -31,6 +30,9 @@ async def root(request: Request):
 @app.post("/predict")
 async def predict(request: PredictionRequest):
     result = model.predict(request.text)
+    # return JSONResponse({
+    #     "toxicity score": result
+    # })
     return result
 
 # Страница здоровья
