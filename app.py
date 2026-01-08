@@ -14,8 +14,8 @@ templates = Jinja2Templates(directory="templates")
 
 # Загружаем модель
 model = ToxityModel(
-    russian_stop_words_path="/Users/tomilovdima/good_bad_news/data/russian_stop_words",
-    model_path="/Users/tomilovdima/good_bad_news/artefacts/toxic_model_v1.pkl"
+    russian_stop_words_path="data/russian_stop_words", 
+    model_path="artefacts/toxic_model_v1.pkl"        
 )
 # Модель для запроса
 class PredictionRequest(BaseModel):

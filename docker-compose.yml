@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    container_name: toxic_classifier
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - ./artefacts:/app/artefacts
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always

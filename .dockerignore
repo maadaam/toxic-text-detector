@@ -1,0 +1,31 @@
+# Виртуальные среды
+venv/
+env/
+.venv/
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Логи
+*.log
+
+# Операционные системы
+.DS_Store
+Thumbs.db
+
+# Тестовые данные
+test*
+*test*
+
+# Ноутбуки
+notebooks/

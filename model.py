@@ -1,12 +1,12 @@
 import joblib
-import pymorphy2
+import pymorphy3
 import re
 
 class ToxityModel:
-    def __init__(self, russian_stop_words_path: str, model_path: str):
+    def __init__(self, russian_stop_words_path: "data/russian_stop_words", model_path: "artefacts/toxic_model_v1.pkl"):
         self.russian_stop_words = joblib.load(russian_stop_words_path) #загружаем стоп слова
         self.pipeline = joblib.load(model_path) #загружаем модель для предсказаний (+ векторизатор)
-        self.morph = pymorphy2.MorphAnalyzer() #загружаем лемматизатор
+        self.morph = pymorphy3.MorphAnalyzer() #загружаем лемматизатор
 
 
     def preprocess(self, text: str) -> str: #функция предобработки текста
