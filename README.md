@@ -3,13 +3,34 @@
 
 Модель машинного обучения для автоматического определения токсичности в русскоязычных текстовых комментариях. Проект включает классификатор на основе SVM/TF-IDF, REST API на FastAPI и готовую Docker-инфраструктуру для быстрого развертывания.
 
-## Быстрый старт
+## Предварительные требования
 
-Запустите проект одной командой:
+### 1. Установите Docker
+- **Windows/Mac**: Скачайте и установите [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- **Linux**: Выполните в терминале:
+  ```bash
+  sudo apt-get update
+  sudo apt-get install docker.io docker-compose
+  ```
+### 2. Проверьте установку
+- Откройте терминал и выполните:
+  ```bash
+  docker --version
+  docker-compose --version
+  ```
 
-```bash
-docker-compose up
-```
+## установка и старт
+
+### 1. клонируйте репозиторий:
+  ```bash
+  git clone https://github.com/maadaam/toxic-text-detector
+  cd toxic-text-detector
+  ```
+
+### 2. запустите:
+  ```bash
+  docker-compose up
+  ```
 
 После запуска:
 *   **API сервер** будет доступен по адресу: `http://localhost:8000`
